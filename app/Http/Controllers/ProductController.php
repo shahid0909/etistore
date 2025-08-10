@@ -45,7 +45,7 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
-            'SubCategory_id' => 'nullable|exists:sub_categories,id',
+            'subCategory_id' => 'nullable|exists:sub_categories,id',
             'unit_id' => 'required|exists:units,id',
             'description' => 'nullable|string',
             'reorder_level' => 'nullable|integer|min:0',

@@ -28,7 +28,7 @@ Dashboard Page - Admin Panel
 <!-- page title area end -->
 
 <div class="main-content-inner">
-    <marquee style="margin-top: 5px ; color: red ; font-weight: bold ">This is a demo version. Access is available on 25 June 2025.</marquee>
+{{--    <marquee style="margin-top: 5px ; color: red ; font-weight: bold ">This is a demo version. Access is available on 25 June 2025.</marquee>--}}
 
 
     <div class="row">
