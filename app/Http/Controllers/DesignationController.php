@@ -26,7 +26,7 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        if (is_null($this->user) || !$this->user->can('admin.view')) {
+        if (is_null($this->user) || !$this->user->can('staff.view')) {
             abort(403, 'You are unauthorized to view this page.');
         }
 
@@ -76,7 +76,7 @@ class DesignationController extends Controller
         try {
             // Fetch designations and order by 'id' descending
             $data = Designation::orderBy('id', 'desc')->get();
-    
+
             // Return datatable JSON response
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -95,7 +95,7 @@ class DesignationController extends Controller
             return response()->json(['error' => 'Failed to load data: ' . $e->getMessage()], 500);
         }
     }
-    
+
 
     /**
      * Edit a designation.
@@ -118,6 +118,6 @@ class DesignationController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
-    
-    
+
+
 }
