@@ -27,7 +27,7 @@ class StaffController extends Controller
      */
     public function index()
     {
-        if (is_null($this->user) || !$this->user->can('admin.view')) {
+        if (is_null($this->user) || !$this->user->can('staff.view')) {
             abort(403, 'You are unauthorized to view this page.');
         }
 
@@ -87,7 +87,7 @@ class StaffController extends Controller
     {
         try {
             $data = Staff::with(['department', 'designation'])->orderBy('id', 'desc')->get();
-    
+
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->editColumn('status', function ($item) {
@@ -111,7 +111,7 @@ class StaffController extends Controller
             return response()->json(['error' => 'Failed to load data: ' . $e->getMessage()], 500);
         }
     }
-    
+
 
     /**
      * Edit Staff.
