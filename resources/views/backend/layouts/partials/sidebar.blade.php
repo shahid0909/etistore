@@ -66,22 +66,22 @@
                         </li>
                     @endif
 
-                    @if ($usr->can('admin.create') || $usr->can('admin.view') ||  $usr->can('admin.edit') ||  $usr->can('admin.delete'))
+                    @if ($usr->can('staff.create'))
                         <li>
                             <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-user"></i><span>
                             Setup Staff / Officer
                         </span></a>
                             <ul class="collapse {{ Route::is('designation.index') || Route::is('designation.index') || Route::is('designation.index') || Route::is('designation.index') ? 'in' : '' }}">
 
-                                @if ($usr->can('admin.view'))
+                                @if ($usr->can('staff.create'))
                                     <li class="{{ Route::is('designation.index')  || Route::is('designation.index') ? 'active' : '' }}">
                                         <a href="{{ route('designation.index') }}">Designation</a></li>
                                 @endif
-                                @if ($usr->can('admin.view'))
+                                @if ($usr->can('staff.create'))
                                     <li class="{{ Route::is('department.index')  || Route::is('department.index') ? 'active' : '' }}">
                                         <a href="{{ route('department.index') }}">Department</a></li>
                                 @endif
-                                @if ($usr->can('admin.view'))
+                                @if ($usr->can('staff.create'))
                                     <li class="{{ Route::is('staff.index')  || Route::is('staff.index') ? 'active' : '' }}">
                                         <a href="{{ route('staff.index') }}">Staff / Officer list</a></li>
                                 @endif
@@ -179,19 +179,19 @@
                     @endif
 
 
-                    @if ($usr->can('admin.create') || $usr->can('admin.view') ||  $usr->can('admin.edit') ||  $usr->can('admin.delete'))
+                    @if ($usr->can('issue.report') || $usr->can('purchase.report') )
                         <li>
                             <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-user"></i><span>
                             Report
                         </span></a>
                             <ul class="collapse {{ Route::is('report.index') || Route::is('purchase_report.index') ? 'in' : '' }}">
 
-                                @if ($usr->can('admin.view'))
+                                @if ($usr->can('issue.report'))
                                     <li class="{{ Route::is('report.index')  || Route::is('purchase_report.index') ? 'active' : '' }}">
                                         <a href="{{ route('report.index') }}">Issue Report</a></li>
                                 @endif
-                                @if ($usr->can('admin.view'))
-                                    <li class="{{ Route::is('report.index')  || Route::is('purchase_report.index') ? 'active' : '' }}">
+                                @if ($usr->can('purchase.report'))
+                                    <li class="{{ Route::is('purchase.report')  || Route::is('purchase_report.index') ? 'active' : '' }}">
                                         <a href="{{ route('purchase_report.index') }}">purchase Report</a></li>
                                 @endif
                             </ul>
