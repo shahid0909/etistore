@@ -90,7 +90,7 @@
             serverSide: true,
             ajax: '{{ route("designation.datatable") }}',
             columns: [{
-                    data: 'id'
+                data: 'DT_RowIndex', orderable: false, searchable: false
                 },
                 {
                     data: 'name'

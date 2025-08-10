@@ -25,7 +25,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        if (is_null($this->user) || !$this->user->can('staff.view')) {
+        if (is_null($this->user) || !$this->user->can('staff.create')) {
             abort(403, 'You are unauthorized to view this page.');
         }
 
@@ -89,6 +89,7 @@ class DepartmentController extends Controller
                     ';
                 })
                 ->rawColumns(['action'])
+                ->addIndexColumn()
                 ->make(true);
         } catch (\Exception $e) {
             return response()->json(['error' => 'Failed to load data: ' . $e->getMessage()], 500);

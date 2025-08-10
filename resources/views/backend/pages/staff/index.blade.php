@@ -113,7 +113,7 @@
             serverSide: true,
             ajax: '{{ route("staff.datatable") }}',
             columns: [{
-                    data: 'id'
+                data: 'DT_RowIndex', orderable: false, searchable: false
                 },
                 {
                     data: 'name'
