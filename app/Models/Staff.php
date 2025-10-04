@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Staff extends Model
@@ -34,5 +35,10 @@ class Staff extends Model
     public function designation()
     {
         return $this->belongsTo(Designation::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

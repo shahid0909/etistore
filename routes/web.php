@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\RequisitionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\IssuancesController;
@@ -37,14 +38,14 @@ Route::get('/clear-cache', function () {
     Artisan::call('route:clear');
     Artisan::call('view:clear');
     // Artisan::call('session:clear');
-    
+
     return "Cache cleared!";
 });
 
 Route::get('/test-write', function () {
     $file = storage_path('app/test.txt');
     // dd($file);  // This will print out the full file path
-    
+
     // Try writing to the file after confirming the correct path
     file_put_contents($file, 'Test content');
     return 'File written successfully!';
@@ -174,4 +175,11 @@ Route::get('purchase/reports', [PurchaseReportController::class, 'index'])->name
 Route::get('purchase/reports/data', [PurchaseReportController::class, 'fetchReportData'])->name('purchase_report.data');
 Route::get('purchase/reports/dropdown', [PurchaseReportController::class, 'getDropdownData'])->name('purchase_report.dropdown');
 
-
+Route::prefix('requisitions')->name('requisitions.')->group(function() {
+    Route::get('/', [RequisitionController::class, 'index'])->name('index');
+    Route::get('/create', [RequisitionController::class, 'create'])->name('create');
+    Route::get('/staff/{departmentId}', [RequisitionController::class, 'getStaffByDepartment'])->name('requisitions.getStaffByDepartment');
+    Route::get('/staff/details/{staffId}', [RequisitionController::class, 'getStaffDetails'])->name('requisitions.getStaffDetails');
+    Route::get('/products/stock/{id}', [RequisitionController::class, 'getStock'])->name('products.stock');
+    Route::post('/store', [RequisitionController::class, 'store'])->name('store');
+});
